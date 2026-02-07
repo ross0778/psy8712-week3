@@ -12,3 +12,7 @@ clean_df<- clean_df[clean_df$q6==1,]
 clean_df$timeSpent<- difftime(clean_df$timeEnd, clean_df$timeStart, units="secs")
 hist(as.numeric(clean_df$timeSpent))
 frequency_tables_list<- lapply(clean_df[5:14], table)
+lapply(frequency_tables_list, barplot)
+sum(clean_df$q1>=clean_df$q2 & clean_df$q2 != clean_df$q3)
+for(x in 1:length(frequency_tables_list)) {
+  barplot(frequency_tables_list[[x]])}
